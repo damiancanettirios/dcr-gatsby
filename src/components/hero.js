@@ -1,15 +1,43 @@
 import React from 'react'
-import Img from 'gatsby-image'
+import Typography from '@material-ui/core/Typography'
+import { withStyles } from '@material-ui/core/styles'
 
-import styles from './hero.module.css'
+const styles = theme => ({
+  hero: {
+    background: `#1D1E2C`,
+    color: `#C6C7C4`,
+    margin: `0 auto`,
+    maxWidth: `75%`,
+    paddingTop: `30px`,
+    paddingBottom: `30px`,
+  },
+  [theme.breakpoints.down('sm')]: {
+    hero: {
+      paddingTop: `20px`,
+      paddingBottom: `20px`,
+    },
+    typography: {
+      fontSize: `160%`,
+    },
+  },
+})
 
-export default ({ data }) => (
-  <div className={styles.hero}>
-    <Img className={styles.heroImage} alt={data.name} fluid={data.heroImage.fluid} />
-    <div className={styles.heroDetails}>
-      <h3 className={styles.heroHeadline}>{data.name}</h3>
-      <p className={styles.heroTitle}>{data.title}</p>
-      <p>{data.shortBio.shortBio}</p>
+const Hero = ({ classes }) => (
+  <div className={classes.hero}>
+    <div>
+      <Typography
+        variant="h3"
+        color="inherit"
+        align="center"
+        className={classes.typography}
+      >
+        Damian Canetti-Rios is a strategist and currently the co-Managing
+        Director of
+        <span style={{ color: `#20BF55` }}>{' Hunter Applied Research'}</span>,
+        a boutique research management and government grants consultancy
+      </Typography>
     </div>
   </div>
 )
+
+export default withStyles(styles)(Hero)

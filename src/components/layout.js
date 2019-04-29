@@ -1,26 +1,20 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import base from './base.css'
-import Container from './container'
 import Navigation from './navigation'
+import Footer from './footer'
+import withRoot from '../withRoot'
+import './base.css'
 
 class Template extends React.Component {
   render() {
-    const { location, children } = this.props
-    let header
-
-    let rootPath = `/`
-    if (typeof __PREFIX_PATHS__ !== `undefined` && __PREFIX_PATHS__) {
-      rootPath = __PATH_PREFIX__ + `/`
-    }
-
+    const { children, logo } = this.props
     return (
-      <Container>
-        <Navigation />
+      <React.Fragment>
+        <Navigation logo={logo} />
         {children}
-      </Container>
+        <Footer />
+      </React.Fragment>
     )
   }
 }
 
-export default Template
+export default withRoot(Template)
