@@ -2,8 +2,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
-import ChevronDownIcon from 'mdi-material-ui/ChevronDown'
-import ChevronUpIcon from 'mdi-material-ui/ChevronUp'
+import { MdExpandLess, MdExpandMore } from 'react-icons/md'
 import IconButton from '@material-ui/core/IconButton'
 
 const styles = theme => ({
@@ -91,7 +90,7 @@ class CvEntry extends React.Component {
             </Grid>
             <Grid item md={1} className={classes.cvTitle}>
               <IconButton color="secondary" onClick={this.handleClick}>
-                {!active ? <ChevronUpIcon /> : <ChevronDownIcon />}
+                {!active ? <MdExpandLess /> : <MdExpandMore />}
               </IconButton>
             </Grid>
           </Grid>

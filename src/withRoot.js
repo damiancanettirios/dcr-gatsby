@@ -1,40 +1,40 @@
 import React from 'react'
-import { MuiThemeProvider } from '@material-ui/core/styles'
+import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import CssBaseline from '@material-ui/core/CssBaseline'
-import JssProvider from 'react-jss/lib/JssProvider'
-import getPageContext from './getPageContext'
+import 'typeface-poppins'
+
+// A theme with custom primary and secondary color.
+// It's optional.
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: '#20BF55',
+      contrastText: '#fff',
+    },
+    secondary: {
+      main: '#C6C7C4',
+      contrastText: '#000',
+    },
+  },
+  typography: {
+    useNextVariants: true,
+    fontFamily: ['Poppins', 'Roboto', 'Helvetica Neue', 'Arial', 'sans-serif'],
+  },
+})
 
 function withRoot(Component) {
-  class WithRoot extends React.Component {
-    constructor(props) {
-      super(props)
-      this.muiPageContext = getPageContext()
-    }
-
-    componentDidMount() {
-      // Remove the server-side injected CSS.
-      const jssStyles = document.querySelector('#jss-server-side')
-      if (jssStyles) {
-        jssStyles.parentNode.removeChild(jssStyles)
-      }
-    }
-
-    render() {
-      return (
-        <JssProvider generateClassName={this.muiPageContext.generateClassName}>
-          <MuiThemeProvider
-            theme={this.muiPageContext.theme}
-            sheetsManager={this.muiPageContext.sheetsManager}
-          >
-            {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-            <CssBaseline />
-            <div style={{ backgroundColor: `#1D1E2C` }}>
-              <Component {...this.props} />
-            </div>
-          </MuiThemeProvider>
-        </JssProvider>
-      )
-    }
+  function WithRoot(props) {
+    // MuiThemeProvider makes the theme available down the React tree
+    // thanks to React context.
+    return (
+      <MuiThemeProvider theme={theme}>
+        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+        <CssBaseline />
+        <div style={{ backgroundColor: `#1D1E2C` }}>
+          <Component {...props} />
+        </div>
+      </MuiThemeProvider>
+    )
   }
 
   return WithRoot

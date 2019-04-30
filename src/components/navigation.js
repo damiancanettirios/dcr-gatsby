@@ -7,8 +7,8 @@ import Drawer from '@material-ui/core/Drawer'
 import List from '@material-ui/core/List'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemText from '@material-ui/core/ListItemText'
-import IconButton from '@material-ui/core/IconButton'
-import MenuIcon from 'mdi-material-ui/Menu'
+import IconButton from '@material-ui/core/Button'
+import { MdMenu } from 'react-icons/md'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import Grid from '@material-ui/core/Grid'
 import 'typeface-pacifico'
@@ -153,7 +153,7 @@ class Navigation extends React.Component {
                     onClick={this.toggleDrawer('top', true)}
                     style={{ marginRight: 10 }}
                   >
-                    <MenuIcon />
+                    <MdMenu />
                   </IconButton>
                 </Grid>
                 <Drawer

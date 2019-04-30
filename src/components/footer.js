@@ -1,7 +1,6 @@
 import React from 'react'
-import TwitterIcon from 'mdi-material-ui/Twitter'
-import LinkedinIcon from 'mdi-material-ui/Linkedin'
-import EmailIcon from 'mdi-material-ui/At'
+import { FaTwitter, FaLinkedinIn } from 'react-icons/fa'
+import { MdEmail } from 'react-icons/md'
 import IconButton from '@material-ui/core/IconButton'
 
 class Footer extends React.Component {
@@ -18,17 +17,17 @@ class Footer extends React.Component {
       >
         <a href="https://twitter.com/dcrrrrrrrrr">
           <IconButton color="primary">
-            <TwitterIcon />
+            <FaTwitter />
           </IconButton>
         </a>
         <a href="https://www.linkedin.com/in/damiancanettirios/">
           <IconButton color="primary">
-            <LinkedinIcon />
+            <FaLinkedinIn />
           </IconButton>
         </a>
         <a href="mailto:damian.canetti.rios@gmail.com">
           <IconButton color="primary">
-            <EmailIcon />
+            <MdEmail />
           </IconButton>
         </a>
       </div>
