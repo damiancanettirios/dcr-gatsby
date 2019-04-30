@@ -7,10 +7,9 @@ try {
 
 // Overwrite the Contentful config with environment variables if they exist
 contentfulConfig = {
-  spaceId: process.env.GATSBY_CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
+  spaceId: process.env.CONTENTFUL_SPACE_ID || contentfulConfig.spaceId,
   accessToken:
-    process.env.GATSBY_CONTENTFUL_DELIVERY_TOKEN ||
-    contentfulConfig.accessToken,
+    process.env.CONTENTFUL_DELIVERY_TOKEN || contentfulConfig.accessToken,
 }
 
 const { spaceId, accessToken } = contentfulConfig
