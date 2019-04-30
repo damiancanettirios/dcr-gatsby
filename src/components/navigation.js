@@ -11,7 +11,6 @@ import IconButton from '@material-ui/core/Button'
 import { MdMenu } from 'react-icons/md'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 import Grid from '@material-ui/core/Grid'
-import 'typeface-pacifico'
 
 const styles = theme => ({
   hoverStyles: {
@@ -109,24 +108,12 @@ class Navigation extends React.Component {
                   color: `#C6C7C4`,
                 }}
               >
-                <Link to="/" style={{ textDecoration: `none` }}>
-                  <Grid
-                    container
-                    spacing={8}
-                    alignItems="center"
-                    direction="row"
-                  >
-                    <Grid item>
-                      <img
-                        src={logo.image.file.url}
-                        alt={logo.name}
-                        style={{ width: 80 }}
-                      />
-                    </Grid>
-                    <Grid item>
-                      <h1 style={{ fontFamily: `pacifico` }}>DCR</h1>
-                    </Grid>
-                  </Grid>
+                <Link to="/" style={{ textDecoration: `none`, padding: 10 }}>
+                  <img
+                    src={logo.image.file.url}
+                    alt={logo.name}
+                    style={{ width: 200 }}
+                  />
                 </Link>
               </li>
             </Grid>
