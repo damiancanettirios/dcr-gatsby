@@ -28,6 +28,26 @@ module.exports = {
   plugins: [
     'gatsby-transformer-sharp',
     {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: `Damian Canetti-Rios`,
+        short_name: `Damian Canetti-Rios Personal Site`,
+        start_url: `/`,
+        background_color: `#1D1E2C`,
+        theme_color: `#20BF55`,
+        display: `standalone`,
+        icon: `src/images/DamianFace.svg`,
+      },
+    },
+    `gatsby-plugin-offline`,
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-material-ui',
       // If you want to use styled components, in conjunction to Material-UI, you should:
       // - Change the injection order

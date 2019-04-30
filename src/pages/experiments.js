@@ -93,8 +93,8 @@ export const pageQuery = graphql`
           title
           shortDescription
           heroImage {
-            file {
-              url
+            fluid {
+              ...GatsbyContentfulFluid
             }
             title
           }

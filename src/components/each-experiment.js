@@ -1,4 +1,5 @@
 import React from 'react'
+import Img from 'gatsby-image'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import CardActions from '@material-ui/core/CardActions'
@@ -36,7 +37,7 @@ class EachExperiment extends React.Component {
       <Grid item md={4} sm={6} xs={12} className={classes.cardGrid}>
         <Card className={classes.card}>
           <div style={{ height: 180 }}>
-            <img src={node.heroImage.file.url} alt={node.heroImage.title} />
+            <Img fluid={node.heroImage.fluid} alt={node.heroImage.title} />
           </div>
           <CardContent>
             <Typography variant="h5" color="secondary">

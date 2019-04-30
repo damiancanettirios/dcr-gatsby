@@ -112,7 +112,7 @@ class Navigation extends React.Component {
                 <Link to="/" style={{ textDecoration: `none` }}>
                   <Grid
                     container
-                    spacing={16}
+                    spacing={8}
                     alignItems="center"
                     direction="row"
                   >
