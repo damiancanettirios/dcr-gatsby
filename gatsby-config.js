@@ -39,6 +39,18 @@ module.exports = {
         icon: `src/images/DamianFace.svg`,
       },
     },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: 'UA-139385994-1',
+        // Puts tracking script in the head instead of the body
+        head: false,
+        // Setting this parameter is optional
+        anonymize: true,
+        // Setting this parameter is also optional
+        respectDNT: true,
+      },
+    },
     `gatsby-plugin-offline`,
     {
       resolve: `gatsby-source-filesystem`,
