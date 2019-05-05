@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Hero from '../components/hero'
+import HeroHomePage from '../components/HeroHomePage'
 import Layout from '../components/layout'
 import Experience from '../components/experience'
 
@@ -15,7 +15,7 @@ class RootIndex extends React.Component {
     return (
       <Layout location={this.props.location} logo={logo}>
         <Helmet title={siteTitle} />
-        <Hero />
+        <HeroHomePage />
         <Experience cv={cv} />
       </Layout>
     )

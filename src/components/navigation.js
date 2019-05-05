@@ -19,12 +19,17 @@ const styles = theme => ({
     },
   },
   logo: {
-    maxWidth: `960px`,
-    marginLeft: 50,
+    margin: `0 auto`,
   },
   [theme.breakpoints.down('sm')]: {
     logo: {
       marginLeft: 0,
+    },
+  },
+  [theme.breakpoints.up('md')]: {
+    logo: {
+      paddingTop: 30,
+      paddingBottom: 30,
     },
   },
 })
@@ -87,7 +92,8 @@ class Navigation extends React.Component {
           style={{
             listStyle: `none`,
             padding: 0,
-            margin: 0,
+            margin: `0 auto`,
+            width: `90%`,
             minHeight: `60px`,
             fontSize: `1.25em`,
           }}
@@ -104,7 +110,6 @@ class Navigation extends React.Component {
                 style={{
                   display: `inline-flex`,
                   alignItems: `center`,
-                  margin: `0 1em`,
                   color: `#C6C7C4`,
                 }}
               >
@@ -134,13 +139,13 @@ class Navigation extends React.Component {
               </Hidden>
             ) : (
               <div style={{ color: `#C6C7C4` }}>
-                <Grid item>
+                <Grid item style={{ width: `0 auto` }}>
                   <IconButton
                     color="inherit"
                     onClick={this.toggleDrawer('top', true)}
-                    style={{ marginRight: 10 }}
+                    style={{ minWidth: 20, padding: 3 }}
                   >
-                    <MdMenu />
+                    <MdMenu style={{ width: `auto` }} />
                   </IconButton>
                 </Grid>
                 <Drawer

@@ -20,9 +20,7 @@ const styles = theme => ({
     height: 480,
   },
   [theme.breakpoints.down('sm')]: {
-    card: {
-      height: `100%`,
-    },
+    card: {},
     cardGrid: {
       marginRight: 0,
       marginBottom: 10,
@@ -40,13 +38,17 @@ class EachExperiment extends React.Component {
             <Img fluid={node.heroImage.fluid} alt={node.heroImage.title} />
           </div>
           <CardContent>
-            <Typography variant="h5" color="secondary">
+            <Typography
+              variant="h5"
+              color="secondary"
+              style={{ fontWeight: `bold` }}
+            >
               {node.title}
             </Typography>
             <Typography
-              variant="body1"
+              variant="h6"
               color="secondary"
-              style={{ marginTop: 10 }}
+              style={{ marginTop: 10, fontWeight: `normal` }}
             >
               {node.shortDescription}
             </Typography>

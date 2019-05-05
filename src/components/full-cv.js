@@ -70,18 +70,26 @@ class CvEntry extends React.Component {
               </Grid>
             </Grid>
             <Grid item container direction="column" md={8} sm={12}>
-              <Grid item style={{ paddingTop: 10 }} className={classes.cvTitle}>
+              <Grid item className={classes.cvTitle}>
                 <Typography variant="h5" color="secondary">
                   {cv.name}
                 </Typography>
               </Grid>
               <Grid item className={classes.cvTitle}>
-                <Typography variant="body1" color="primary">
+                <Typography
+                  variant="h6"
+                  color="primary"
+                  style={{ fontWeight: `normal` }}
+                >
                   {cv.myTitle}
                 </Typography>
               </Grid>
               <Grid item className={classes.cvTitle}>
-                <Typography variant="body1" color="primary">
+                <Typography
+                  variant="h6"
+                  color="primary"
+                  style={{ fontWeight: `normal` }}
+                >
                   {cv.startDate}
                   {' - '}
                   {cv.endDate != null ? cv.endDate : 'present'}
@@ -96,7 +104,11 @@ class CvEntry extends React.Component {
           </Grid>
           {!active ? (
             <Grid item container md={12} sm={12} className={classes.cvDetail}>
-              <Typography variant="body1" color="secondary">
+              <Typography
+                variant="h6"
+                color="secondary"
+                style={{ fontWeight: `normal` }}
+              >
                 {cv.duties.duties}
               </Typography>
             </Grid>

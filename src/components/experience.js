@@ -10,12 +10,13 @@ export default ({ cv }) => (
     }}
   >
     <Typography
-      variant="body1"
+      variant="h6"
       color="inherit"
       align="center"
       style={{
         padding: 0,
         margin: `0px 0px 10px 0px`,
+        fontWeight: `normal`,
       }}
     >
       With Experience Gained From

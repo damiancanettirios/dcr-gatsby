@@ -2,28 +2,23 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
 import Layout from '../components/layout'
-import EachExperiment from '../components/each-experiment'
+import Hero from '../components/Hero'
+import EachExperimentCol from '../components/each-experiment-col'
 
 const styles = theme => ({
-  experimentHero: {
-    color: `#C6C7C4`,
-    margin: `0 auto`,
-    maxWidth: `80%`,
-    padding: `60px 0px 60px 0px`,
-  },
   experimentList: {
-    maxWidth: `80%`,
+    width: `80%`,
     color: `#C6C7C4`,
     margin: `0 auto`,
   },
   [theme.breakpoints.down('sm')]: {
     experimentList: {
-      maxWidth: `80%`,
+      width: `90%`,
       color: `#C6C7C4`,
       margin: `0 auto`,
     },
@@ -35,38 +30,26 @@ class ExperimentPage extends React.Component {
     const siteTitle = get(this, 'props.data.site.siteMetadata.title')
     const title = 'Experiments | ' + siteTitle
     const experiments = get(this, 'props.data.experiments.edges')
-    const logo = get(this, 'props.data.contentfulLogo')
+    const logo = get(this, 'props.data.logo')
+    const pageContent = get(this, 'props.data.pageContent')
     const { classes } = this.props
 
     return (
       <Layout logo={logo}>
         <Helmet title={title} />
-        <div className={classes.experimentHero}>
-          <Typography variant="h3" color="inherit" align="center">
-            Personal growth project
-          </Typography>
-          <Typography
-            variant="body1"
-            color="inherit"
-            align="center"
-            style={{ marginTop: 20 }}
-          >
-            No quite mad scientist level but experiments nonetheless to feed my
-            humblebrag
-          </Typography>
-        </div>
+        <Hero pageContent={pageContent} />
         <div className={classes.experimentList}>
           <Typography
             variant="h3"
             color="inherit"
             style={{ marginTop: 30, marginBottom: 10 }}
           >
-            Experiments
+            {pageContent.secondTitle}
           </Typography>
           <hr style={{ color: `#C6C7C4` }} />
-          <Grid container spacing={8} direction="row">
+          <Grid container direction="column">
             {experiments.map(({ node }) => (
-              <EachExperiment key={node.id} node={node} />
+              <EachExperimentCol key={node.id} node={node} />
             ))}
           </Grid>
         </div>
@@ -85,12 +68,13 @@ export const pageQuery = graphql`
       }
     }
     experiments: allContentfulExperiments(
-      sort: { fields: sequence, order: ASC }
+      sort: { fields: sequence, order: DESC }
     ) {
       edges {
         node {
           id
           title
+          slug
           shortDescription
           heroImage {
             fluid {
@@ -102,7 +86,7 @@ export const pageQuery = graphql`
         }
       }
     }
-    contentfulLogo {
+    logo: contentfulLogo {
       id
       title
       image {
@@ -110,6 +94,13 @@ export const pageQuery = graphql`
           url
         }
       }
+    }
+    pageContent: contentfulPageContent(page: { eq: "Experiments" }) {
+      title
+      description {
+        description
+      }
+      secondTitle
     }
   }
 `
