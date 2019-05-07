@@ -2,7 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import get from 'lodash/get'
 import Helmet from 'react-helmet'
-import HeroHomePage from '../components/HeroHomePage'
+import HeroHomePage from '../components/homePage'
 import Layout from '../components/layout'
 import Experience from '../components/experience'
 

@@ -7,7 +7,7 @@ import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
 import Layout from '../components/layout'
-import Hero from '../components/Hero'
+import Hero from '../components/hero'
 import EachExperimentCol from '../components/each-experiment-col'
 
 const styles = theme => ({

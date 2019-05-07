@@ -7,7 +7,7 @@ import Grid from '@material-ui/core/Grid'
 
 import Layout from '../components/layout'
 import FullCV from '../components/full-cv'
-import Hero from '../components/Hero'
+import Hero from '../components/hero'
 
 class CVPage extends React.Component {
   render() {
