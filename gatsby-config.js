@@ -23,6 +23,7 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Damian Canetti-Rios',
+    description: 'Myth, Legend, Humble Man',
   },
   pathPrefix: '/',
   plugins: [

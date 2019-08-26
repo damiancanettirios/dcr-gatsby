@@ -1,7 +1,5 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import get from 'lodash/get'
-import Helmet from 'react-helmet'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
@@ -25,48 +23,36 @@ const styles = theme => ({
   },
 })
 
-class ExperimentPage extends React.Component {
-  render() {
-    const siteTitle = get(this, 'props.data.site.siteMetadata.title')
-    const title = 'Experiments | ' + siteTitle
-    const experiments = get(this, 'props.data.experiments.edges')
-    const logo = get(this, 'props.data.logo')
-    const pageContent = get(this, 'props.data.pageContent')
-    const { classes } = this.props
+const ExperimentPage = ({ data, classes }) => {
+  const experiments = data.experiments.edges
+  const pageContent = data.pageContent
 
-    return (
-      <Layout logo={logo}>
-        <Helmet title={title} />
-        <Hero pageContent={pageContent} />
-        <div className={classes.experimentList}>
-          <Typography
-            variant="h3"
-            color="inherit"
-            style={{ marginTop: 30, marginBottom: 10 }}
-          >
-            {pageContent.secondTitle}
-          </Typography>
-          <hr style={{ color: `#C6C7C4` }} />
-          <Grid container direction="column">
-            {experiments.map(({ node }) => (
-              <EachExperimentCol key={node.id} node={node} />
-            ))}
-          </Grid>
-        </div>
-      </Layout>
-    )
-  }
+  return (
+    <Layout pageTitle="Experiments">
+      <Hero pageContent={pageContent} />
+      <div className={classes.experimentList}>
+        <Typography
+          variant="h3"
+          color="inherit"
+          style={{ marginTop: 30, marginBottom: 10 }}
+        >
+          {pageContent.secondTitle}
+        </Typography>
+        <hr style={{ color: `#C6C7C4` }} />
+        <Grid container direction="column">
+          {experiments.map(({ node }) => (
+            <EachExperimentCol key={node.id} node={node} />
+          ))}
+        </Grid>
+      </div>
+    </Layout>
+  )
 }
 
 export default withStyles(styles)(ExperimentPage)
 
 export const pageQuery = graphql`
   query ExperimentQuery {
-    site {
-      siteMetadata {
-        title
-      }
-    }
     experiments: allContentfulExperiments(
       sort: { fields: sequence, order: DESC }
     ) {
@@ -83,15 +69,6 @@ export const pageQuery = graphql`
             title
           }
           tags
-        }
-      }
-    }
-    logo: contentfulLogo {
-      id
-      title
-      image {
-        file {
-          url
         }
       }
     }

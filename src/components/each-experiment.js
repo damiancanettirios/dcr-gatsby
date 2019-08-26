@@ -28,46 +28,41 @@ const styles = theme => ({
   },
 })
 
-class EachExperiment extends React.Component {
-  render() {
-    const { node, classes } = this.props
-    return (
-      <Grid item md={4} sm={6} xs={12} className={classes.cardGrid}>
-        <Card className={classes.card}>
-          <div style={{ height: 180 }}>
-            <Img fluid={node.heroImage.fluid} alt={node.heroImage.title} />
-          </div>
-          <CardContent>
-            <Typography
-              variant="h5"
-              color="secondary"
-              style={{ fontWeight: `bold` }}
-            >
-              {node.title}
-            </Typography>
-            <Typography
-              variant="h6"
-              color="secondary"
-              style={{ marginTop: 10, fontWeight: `normal` }}
-            >
-              {node.shortDescription}
-            </Typography>
-          </CardContent>
-          <CardActions>
-            <div style={{ marginTop: 10 }}>
-              {node.tags.map(tag => (
-                <Chip
-                  key={tag}
-                  label={tag}
-                  style={{ marginTop: 5, marginRight: 5 }}
-                />
-              ))}
-            </div>
-          </CardActions>
-        </Card>
-      </Grid>
-    )
-  }
-}
+const EachExperiment = ({ node, classes }) => (
+  <Grid item md={4} sm={6} xs={12} className={classes.cardGrid}>
+    <Card className={classes.card}>
+      <div style={{ height: 180 }}>
+        <Img fluid={node.heroImage.fluid} alt={node.heroImage.title} />
+      </div>
+      <CardContent>
+        <Typography
+          variant="h5"
+          color="secondary"
+          style={{ fontWeight: `bold` }}
+        >
+          {node.title}
+        </Typography>
+        <Typography
+          variant="h6"
+          color="secondary"
+          style={{ marginTop: 10, fontWeight: `normal` }}
+        >
+          {node.shortDescription}
+        </Typography>
+      </CardContent>
+      <CardActions>
+        <div style={{ marginTop: 10 }}>
+          {node.tags.map(tag => (
+            <Chip
+              key={tag}
+              label={tag}
+              style={{ marginTop: 5, marginRight: 5 }}
+            />
+          ))}
+        </div>
+      </CardActions>
+    </Card>
+  </Grid>
+)
 
 export default withStyles(styles)(EachExperiment)

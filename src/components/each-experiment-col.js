@@ -43,70 +43,62 @@ const styles = theme => ({
   },
 })
 
-class EachExperimentCol extends React.Component {
-  render() {
-    const { node, classes } = this.props
-    return (
-      <Card className={classes.card}>
-        <Grid item container direction="row">
-          {/* Photo */}
-          <Grid item xl={2} lg={4} md={5} sm={12} xs={12}>
-            <Img
-              fluid={node.heroImage.fluid}
-              alt={node.heroImage.title}
-              className={classes.image}
-            />
-          </Grid>
-          {/* Text */}
-          <Grid item xl={10} lg={8} md={7} sm={12} xs={12}>
-            <CardContent className={classes.cardContent}>
-              <Grid
-                container
-                direction="column"
-                justify="space-between"
-                style={{ height: `100%` }}
+const EachExperimentCol = ({ node, classes }) => (
+  <Card className={classes.card}>
+    <Grid item container direction="row">
+      {/* Photo */}
+      <Grid item xl={2} lg={4} md={5} sm={12} xs={12}>
+        <Img
+          fluid={node.heroImage.fluid}
+          alt={node.heroImage.title}
+          className={classes.image}
+        />
+      </Grid>
+      {/* Text */}
+      <Grid item xl={10} lg={8} md={7} sm={12} xs={12}>
+        <CardContent className={classes.cardContent}>
+          <Grid
+            container
+            direction="column"
+            justify="space-between"
+            style={{ height: `100%` }}
+          >
+            <Grid item>
+              <Link to={`/experiments/${node.slug}`} className={classes.link}>
+                <Typography
+                  variant="h5"
+                  color="primary"
+                  style={{ fontWeight: `bold` }}
+                >
+                  {node.title}
+                </Typography>
+              </Link>
+            </Grid>
+            <Grid item>
+              <Typography
+                variant="h6"
+                color="secondary"
+                style={{ marginTop: 10, fontWeight: `normal` }}
               >
-                <Grid item>
-                  <Link
-                    to={`/experiments/${node.slug}`}
-                    className={classes.link}
-                  >
-                    <Typography
-                      variant="h5"
-                      color="primary"
-                      style={{ fontWeight: `bold` }}
-                    >
-                      {node.title}
-                    </Typography>
-                  </Link>
-                </Grid>
-                <Grid item>
-                  <Typography
-                    variant="h6"
-                    color="secondary"
-                    style={{ marginTop: 10, fontWeight: `normal` }}
-                  >
-                    {node.shortDescription}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <div style={{ marginTop: 10 }}>
-                    {node.tags.map(tag => (
-                      <Chip
-                        key={tag}
-                        label={tag}
-                        style={{ marginTop: 5, marginRight: 5 }}
-                      />
-                    ))}
-                  </div>
-                </Grid>
-              </Grid>
-            </CardContent>
+                {node.shortDescription}
+              </Typography>
+            </Grid>
+            <Grid item>
+              <div style={{ marginTop: 10 }}>
+                {node.tags.map(tag => (
+                  <Chip
+                    key={tag}
+                    label={tag}
+                    style={{ marginTop: 5, marginRight: 5 }}
+                  />
+                ))}
+              </div>
+            </Grid>
           </Grid>
-        </Grid>
-      </Card>
-    )
-  }
-}
+        </CardContent>
+      </Grid>
+    </Grid>
+  </Card>
+)
 
 export default withStyles(styles)(EachExperimentCol)

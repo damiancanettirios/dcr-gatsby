@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import { withStyles } from '@material-ui/core/styles'
@@ -36,89 +36,75 @@ const styles = theme => ({
   },
 })
 
-class CvEntry extends React.Component {
-  state = {
-    active: true,
-  }
-
-  handleClick = () => {
-    const { active } = this.state
-    this.setState({
-      active: !active,
-    })
-  }
-
-  render() {
-    const { cv, image, classes } = this.props
-    const { active } = this.state
-    return (
-      <React.Fragment>
-        <div>
-          <Grid item container direction="row" className={classes.cv}>
-            <Grid item container md={3} sm={12}>
-              <Grid
-                item
-                container
-                alignItems="center"
-                className={classes.cvImage}
-              >
-                <img
-                  src={image}
-                  alt={cv.name}
-                  style={{ margin: `0 auto`, width: 80 }}
-                />
-              </Grid>
-            </Grid>
-            <Grid item container direction="column" md={8} sm={12}>
-              <Grid item className={classes.cvTitle}>
-                <Typography variant="h5" color="secondary">
-                  {cv.name}
-                </Typography>
-              </Grid>
-              <Grid item className={classes.cvTitle}>
-                <Typography
-                  variant="h6"
-                  color="primary"
-                  style={{ fontWeight: `normal` }}
-                >
-                  {cv.myTitle}
-                </Typography>
-              </Grid>
-              <Grid item className={classes.cvTitle}>
-                <Typography
-                  variant="h6"
-                  color="primary"
-                  style={{ fontWeight: `normal` }}
-                >
-                  {cv.startDate}
-                  {' - '}
-                  {cv.endDate != null ? cv.endDate : 'present'}
-                </Typography>
-              </Grid>
-            </Grid>
-            <Grid item md={1} className={classes.cvTitle}>
-              <IconButton color="secondary" onClick={this.handleClick}>
-                {!active ? <MdExpandLess /> : <MdExpandMore />}
-              </IconButton>
+const CvEntry = ({ cv, image, classes }) => {
+  const [active, setActive] = useState(true)
+  return (
+    <>
+      <div>
+        <Grid item container direction="row" className={classes.cv}>
+          <Grid item container md={3} sm={12}>
+            <Grid
+              item
+              container
+              alignItems="center"
+              className={classes.cvImage}
+            >
+              <img
+                src={image}
+                alt={cv.name}
+                style={{ margin: `0 auto`, width: 80 }}
+              />
             </Grid>
           </Grid>
-          {!active ? (
-            <Grid item container md={12} sm={12} className={classes.cvDetail}>
-              <Typography
-                variant="h6"
-                color="secondary"
-                style={{ fontWeight: `normal` }}
-              >
-                {cv.duties.duties}
+          <Grid item container direction="column" md={8} sm={12}>
+            <Grid item className={classes.cvTitle}>
+              <Typography variant="h5" color="secondary">
+                {cv.name}
               </Typography>
             </Grid>
-          ) : (
-            <div />
-          )}
-        </div>
-      </React.Fragment>
-    )
-  }
+            <Grid item className={classes.cvTitle}>
+              <Typography
+                variant="h6"
+                color="primary"
+                style={{ fontWeight: `normal` }}
+              >
+                {cv.myTitle}
+              </Typography>
+            </Grid>
+            <Grid item className={classes.cvTitle}>
+              <Typography
+                variant="h6"
+                color="primary"
+                style={{ fontWeight: `normal` }}
+              >
+                {cv.startDate}
+                {' - '}
+                {cv.endDate != null ? cv.endDate : 'present'}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item md={1} className={classes.cvTitle}>
+            <IconButton color="secondary" onClick={() => setActive(!active)}>
+              {!active ? <MdExpandLess /> : <MdExpandMore />}
+            </IconButton>
+          </Grid>
+        </Grid>
+        {!active ? (
+          <Grid item container md={12} sm={12} className={classes.cvDetail}>
+            <Typography
+              variant="h6"
+              color="secondary"
+              style={{ fontWeight: `normal` }}
+            >
+              {cv.duties.duties}
+            </Typography>
+          </Grid>
+        ) : (
+          <div />
+        )}
+      </div>
+    </>
+  )
 }
 
 export default withStyles(styles)(CvEntry)
