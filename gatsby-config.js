@@ -23,10 +23,11 @@ if (!spaceId || !accessToken) {
 module.exports = {
   siteMetadata: {
     title: 'Damian Canetti-Rios',
-    description: 'Myth, Legend, Humble Man',
+    description: 'The most humble person you will ever meet',
   },
   pathPrefix: '/',
   plugins: [
+    'gatsby-plugin-top-layout',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
@@ -76,6 +77,14 @@ module.exports = {
     {
       resolve: 'gatsby-source-contentful',
       options: contentfulConfig,
+    },
+    {
+      resolve: 'gatsby-plugin-mdx',
+      options: {
+        defaultLayouts: {
+          default: require.resolve('./src/components/layout.js'),
+        },
+      },
     },
   ],
 }

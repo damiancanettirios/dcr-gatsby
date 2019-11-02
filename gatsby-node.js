@@ -1,42 +1,53 @@
-const Promise = require('bluebird')
-const path = require('path')
-
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions
 
-  return new Promise((resolve, reject) => {
-    const experimentPost = path.resolve('./src/templates/experiment-post.js')
-    resolve(
-      graphql(
-        `
-          {
-            allContentfulExperiments {
-              edges {
-                node {
-                  title
-                  slug
-                }
-              }
-            }
+  const result = await graphql(`
+    {
+      experiments: allContentfulExperiments {
+        edges {
+          node {
+            title
+            slug
           }
-        `
-      ).then(result => {
-        if (result.errors) {
-          console.log(result.errors)
-          reject(result.errors)
         }
+      }
+      posts: allContentfulBlogPosts {
+        nodes {
+          slug
+        }
+      }
+    }
+  `)
 
-        const posts = result.data.allContentfulExperiments.edges
-        posts.forEach((post, index) => {
-          createPage({
-            path: `/experiments/${post.node.slug}/`,
-            component: experimentPost,
-            context: {
-              slug: post.node.slug,
-            },
-          })
-        })
-      })
-    )
+  // Handle errors
+  if (result.errors) {
+    reporter.panicOnBuild(`Error while running GraphQL query.`)
+    return
+  }
+
+  const experiments = result.data.experiments.edges
+  const experimentTemplate = require.resolve(
+    `./src/templates/experiment-post.js`
+  )
+  experiments.forEach(({ node }) => {
+    createPage({
+      path: `/experiments/${node.slug}/`,
+      component: experimentTemplate,
+      context: {
+        slug: node.slug,
+      },
+    })
+  })
+
+  const posts = result.data.posts.nodes
+  const blogPostTemplate = require.resolve(`./src/templates/blog-post.js`)
+  posts.forEach(post => {
+    createPage({
+      path: `/blog/${post.slug}/`,
+      component: blogPostTemplate,
+      context: {
+        slug: post.slug,
+      },
+    })
   })
 }

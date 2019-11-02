@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import { MdExpandLess, MdExpandMore } from 'react-icons/md'
 import IconButton from '@material-ui/core/IconButton'
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   cv: {
     paddingBottom: 30,
     width: 700,
@@ -31,13 +31,15 @@ const styles = theme => ({
       margin: `0 auto`,
     },
     cvDetail: {
-      width: `100%`,
+      width: `90%`,
+      margin: `0 auto`,
     },
   },
-})
+}))
 
-const CvEntry = ({ cv, image, classes }) => {
+const CvEntry = ({ cv, image }) => {
   const [active, setActive] = useState(true)
+  const classes = useStyles()
   return (
     <>
       <div>
@@ -107,4 +109,4 @@ const CvEntry = ({ cv, image, classes }) => {
   )
 }
 
-export default withStyles(styles)(CvEntry)
+export default CvEntry

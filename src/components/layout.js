@@ -3,7 +3,6 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Navigation from './navigation'
 import Footer from './footer'
 import Helmet from 'react-helmet'
-import withRoot from '../withRoot'
 import './base.css'
 
 import useSiteMetadata from '../hooks/use-sitemetadata'
@@ -12,14 +11,11 @@ const Layout = ({ children, pageTitle }) => {
   const { title, description } = useSiteMetadata()
 
   const { logo } = useStaticQuery(graphql`
-    {
-      logo: contentfulLogo {
-        id
+    query {
+      logo: contentfulAsset(title: { eq: "DamianFace" }) {
         title
-        image {
-          file {
-            url
-          }
+        file {
+          url
         }
       }
     }
@@ -39,4 +35,4 @@ const Layout = ({ children, pageTitle }) => {
   )
 }
 
-export default withRoot(Layout)
+export default Layout

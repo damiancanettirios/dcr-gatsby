@@ -1,14 +1,14 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import Grid from '@material-ui/core/Grid'
-import { withStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 
 import Layout from '../components/layout'
 import Hero from '../components/hero'
 import EachExperimentCol from '../components/each-experiment-col'
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   experimentList: {
     width: `80%`,
     color: `#C6C7C4`,
@@ -21,11 +21,12 @@ const styles = theme => ({
       margin: `0 auto`,
     },
   },
-})
+}))
 
-const ExperimentPage = ({ data, classes }) => {
+const ExperimentPage = ({ data }) => {
   const experiments = data.experiments.edges
   const pageContent = data.pageContent
+  const classes = useStyles()
 
   return (
     <Layout pageTitle="Experiments">
@@ -49,7 +50,7 @@ const ExperimentPage = ({ data, classes }) => {
   )
 }
 
-export default withStyles(styles)(ExperimentPage)
+export default ExperimentPage
 
 export const pageQuery = graphql`
   query ExperimentQuery {

@@ -2,7 +2,7 @@ import React from 'react'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 
-export default ({ cv }) => (
+const Experience = ({ cv }) => (
   <div
     style={{
       backgroundColor: `#C6C7C4`,
@@ -42,3 +42,5 @@ export default ({ cv }) => (
     </Grid>
   </div>
 )
+
+export default Experience

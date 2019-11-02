@@ -1,7 +1,7 @@
 import React from 'react'
 import Typography from '@material-ui/core/Typography'
 
-export default ({ pageContent }) => (
+const Hero = ({ pageContent }) => (
   <React.Fragment>
     <div
       style={{
@@ -25,3 +25,5 @@ export default ({ pageContent }) => (
     </div>
   </React.Fragment>
 )
+
+export default Hero
