@@ -7,6 +7,7 @@ import Typography from '@material-ui/core/Typography'
 import withWidth, { isWidthUp } from '@material-ui/core/withWidth'
 
 import Layout from '../components/layout'
+import BlogLayout from '../components/blog-layout'
 
 const BlogPost = ({ data: { post }, width }) => {
   const opts = {
@@ -21,30 +22,32 @@ const BlogPost = ({ data: { post }, width }) => {
 
   return (
     <Layout pageTitle={`${post.title} | Blog`}>
-      <div
-        style={{
-          color: `#C6C7C4`,
-          maxWidth: 680,
-          margin: `0 auto`,
-          fontSize: `1.25rem`,
-          paddingTop: 50,
-        }}
-      >
-        <Typography
-          variant="h3"
-          color="inherit"
-          style={{ fontWeight: `normal` }}
+      <BlogLayout>
+        <div
+          style={{
+            color: `#C6C7C4`,
+            maxWidth: 680,
+            margin: `0 auto`,
+            fontSize: `1.25rem`,
+            paddingTop: 50,
+          }}
         >
-          {post.title}
-        </Typography>
-        <div style={{ paddingTop: 60, textAlign: `center` }}>
-          <YouTube videoId={post.youTubeLink} opts={opts} />
+          <Typography
+            variant="h3"
+            color="inherit"
+            style={{ fontWeight: `normal` }}
+          >
+            {post.title}
+          </Typography>
+          <div style={{ paddingTop: 60, textAlign: `center` }}>
+            <YouTube videoId={post.youTubeLink} opts={opts} />
+          </div>
+          <MDXRenderer>{post.mdxPost.childMdx.body}</MDXRenderer>
+          <div style={{ marginTop: 20 }}>
+            <Link to="/blog">&larr; back to all posts</Link>
+          </div>
         </div>
-        <MDXRenderer>{post.mdxPost.childMdx.body}</MDXRenderer>
-        <div style={{ marginTop: 20 }}>
-          <Link to="/blog">&larr; back to all posts</Link>
-        </div>
-      </div>
+      </BlogLayout>
     </Layout>
   )
 }

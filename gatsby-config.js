@@ -27,7 +27,6 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
-    'gatsby-plugin-top-layout',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-manifest',

@@ -16,8 +16,15 @@ const useStyles = makeStyles(theme => ({
     height: 100,
     borderRadius: `50%`,
   },
+  cvCompany: {
+    color: `#C6C7C4`,
+  },
+  cvTitle: {
+    color: `#20BF55`,
+  },
   cvDetail: {
     width: 700,
+    color: `#C6C7C4`,
     paddingBottom: 50,
   },
   [theme.breakpoints.down('sm')]: {
@@ -25,6 +32,9 @@ const useStyles = makeStyles(theme => ({
       width: `100%`,
     },
     cvImage: {
+      margin: `0 auto`,
+    },
+    cvCompany: {
       margin: `0 auto`,
     },
     cvTitle: {
@@ -59,15 +69,15 @@ const CvEntry = ({ cv, image }) => {
             </Grid>
           </Grid>
           <Grid item container direction="column" md={8} sm={12}>
-            <Grid item className={classes.cvTitle}>
-              <Typography variant="h5" color="secondary">
+            <Grid item className={classes.cvCompany}>
+              <Typography variant="h5" color="inherit">
                 {cv.name}
               </Typography>
             </Grid>
             <Grid item className={classes.cvTitle}>
               <Typography
                 variant="h6"
-                color="primary"
+                color="inherit"
                 style={{ fontWeight: `normal` }}
               >
                 {cv.myTitle}
@@ -76,7 +86,7 @@ const CvEntry = ({ cv, image }) => {
             <Grid item className={classes.cvTitle}>
               <Typography
                 variant="h6"
-                color="primary"
+                color="inherit"
                 style={{ fontWeight: `normal` }}
               >
                 {cv.startDate}
@@ -85,8 +95,8 @@ const CvEntry = ({ cv, image }) => {
               </Typography>
             </Grid>
           </Grid>
-          <Grid item md={1} className={classes.cvTitle}>
-            <IconButton color="secondary" onClick={() => setActive(!active)}>
+          <Grid item md={1} className={classes.cvCompany}>
+            <IconButton color="inherit" onClick={() => setActive(!active)}>
               {!active ? <MdExpandLess /> : <MdExpandMore />}
             </IconButton>
           </Grid>
@@ -95,7 +105,7 @@ const CvEntry = ({ cv, image }) => {
           <Grid item container md={12} sm={12} className={classes.cvDetail}>
             <Typography
               variant="h6"
-              color="secondary"
+              color="inherit"
               style={{ fontWeight: `normal` }}
             >
               {cv.duties.duties}

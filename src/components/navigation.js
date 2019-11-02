@@ -52,7 +52,7 @@ const NavLink = props => (
       color="inherit"
       style={{ textDecoration: `none` }}
     >
-      <Button color="secondary">{props.name}</Button>
+      <Button color="inherit">{props.name}</Button>
     </Link>
   </li>
 )

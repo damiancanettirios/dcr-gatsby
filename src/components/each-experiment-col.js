@@ -19,12 +19,19 @@ const useStyles = makeStyles(theme => ({
   cardContent: {
     height: `100%`,
   },
+  description: {
+    color: `#C6C7C4`,
+    marginTop: 10,
+    fontWeight: `normal`,
+  },
   link: {
     textDecoration: `none`,
+    color: `#C6C7C4`,
     '&:hover': {
       textDecoration: `underline`,
       color: `#20BF55`,
     },
+    fontWeight: `bold`,
   },
   [theme.breakpoints.up('lg')]: {
     cardContent: {
@@ -67,21 +74,13 @@ const EachExperimentCol = ({ node }) => {
             >
               <Grid item>
                 <Link to={`/experiments/${node.slug}`} className={classes.link}>
-                  <Typography
-                    variant="h5"
-                    color="primary"
-                    style={{ fontWeight: `bold` }}
-                  >
+                  <Typography variant="h5" color="inherit">
                     {node.title}
                   </Typography>
                 </Link>
               </Grid>
-              <Grid item>
-                <Typography
-                  variant="h6"
-                  color="secondary"
-                  style={{ marginTop: 10, fontWeight: `normal` }}
-                >
+              <Grid item className={classes.description}>
+                <Typography variant="h6" color="inherit">
                   {node.shortDescription}
                 </Typography>
               </Grid>
