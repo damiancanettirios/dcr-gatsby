@@ -1,7 +1,6 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
 import Img from 'gatsby-image'
-import { makeStyles } from '@material-ui/core/styles'
 import Typography from '@material-ui/core/Typography'
 import Grid from '@material-ui/core/Grid'
 import Card from '@material-ui/core/Card'
@@ -14,51 +13,7 @@ import Layout from '../components/layout'
 
 import usePosts from '../hooks/use-posts'
 
-const useStyles = makeStyles({
-  hero: {
-    background: `#1D1E2C`,
-    color: `#C6C7C4`,
-    margin: `0 auto`,
-    maxWidth: `75%`,
-    paddingTop: `50px`,
-    paddingBottom: `80px`,
-  },
-  main: {
-    background: `#1D1E2C`,
-    color: `#C6C7C4`,
-    width: `95%`,
-    margin: `0 auto`,
-    paddingTop: `50px`,
-    paddingBottom: `80px`,
-  },
-  link: {
-    textDecoration: `none`,
-    '&:hover': {
-      color: `#20BF55`,
-      textDecoration: `underline`,
-    },
-  },
-  button: {
-    color: `white`,
-  },
-  list: {
-    color: `#C6C7C4`,
-    width: `100%`,
-    margin: `0 auto`,
-    marginTop: 20,
-  },
-  card: {
-    background: `#ffffff11`,
-    color: `white`,
-    margin: 0,
-  },
-  typography: {
-    color: `#C6C7C4`,
-  },
-})
-
 const Home = ({ data }) => {
-  const classes = useStyles()
   const cv = data.resume.edges
   const latestThoughts = data.latestThoughts
   const posts = usePosts()
@@ -66,12 +21,21 @@ const Home = ({ data }) => {
   return (
     <Layout pageTitle="Welcome">
       {/* Hero */}
-      <div className={classes.hero}>
+      <div
+        style={{
+          background: `#1D1E2C`,
+          color: `#C6C7C4`,
+          margin: `0 auto`,
+          maxWidth: `75%`,
+          paddingTop: `50px`,
+          paddingBottom: `80px`,
+        }}
+      >
         <Typography
           variant="h3"
           color="inherit"
           align="center"
-          className={classes.typography}
+          style={{ color: `#C6C7C4` }}
         >
           Damian Canetti-Rios is a strategist and currently the co-Managing
           Director of
@@ -120,11 +84,30 @@ const Home = ({ data }) => {
         </Grid>
       </div>
       {/* Blog */}
-      <div className={classes.main}>
+      <div
+        style={{
+          background: `#1D1E2C`,
+          color: `#C6C7C4`,
+          width: `95%`,
+          margin: `0 auto`,
+          paddingTop: `50px`,
+          paddingBottom: `80px`,
+        }}
+      >
         <Typography variant="h3" color="inherit" align="center">
           {latestThoughts.title}
         </Typography>
-        <Grid container justify="center" spacing={4} className={classes.list}>
+        <Grid
+          container
+          justify="center"
+          spacing={4}
+          style={{
+            color: `#C6C7C4`,
+            width: `100%`,
+            margin: `0 auto`,
+            marginTop: 20,
+          }}
+        >
           {posts.map(post => (
             <Grid
               item
@@ -136,14 +119,25 @@ const Home = ({ data }) => {
               key={post.id}
               style={{ margin: 0 }}
             >
-              <Card className={classes.card}>
+              <Card
+                style={{ background: `#ffffff11`, color: `white`, margin: 0 }}
+              >
                 <CardActionArea>
                   <Link to={`/blog/${post.slug}`}>
                     <Img fluid={post.image.fluid} alt={post.image.title} />
                   </Link>
                 </CardActionArea>
                 <CardContent>
-                  <Link to={`/blog/${post.slug}`} className={classes.link}>
+                  <Link
+                    to={`/blog/${post.slug}`}
+                    style={{
+                      textDecoration: `none`,
+                      '&:hover': {
+                        color: `#20BF55`,
+                        textDecoration: `underline`,
+                      },
+                    }}
+                  >
                     <Typography variant="h5" color="inherit" gutterBottom>
                       {post.title}
                     </Typography>
@@ -157,7 +151,7 @@ const Home = ({ data }) => {
                     component={Link}
                     to={`/blog/${post.slug}`}
                     size="small"
-                    className={classes.button}
+                    style={{ color: `white` }}
                   >
                     Read More
                   </Button>
