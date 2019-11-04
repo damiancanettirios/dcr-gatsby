@@ -27,12 +27,13 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
+    'gatsby-plugin-top-layout',
     {
       resolve: 'gatsby-plugin-material-ui',
       options: {
-        stylesProvider: {
-          injectFirst: true,
-        },
+        // stylesProvider: {
+        //   injectFirst: true,
+        // },
       },
     },
     'gatsby-transformer-sharp',
