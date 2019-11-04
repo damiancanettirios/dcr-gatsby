@@ -10,7 +10,7 @@ const Experience = ({ cv }) => (
     }}
   >
     <Typography
-      variant="h6"
+      variant="h5"
       color="inherit"
       align="center"
       style={{
@@ -23,7 +23,7 @@ const Experience = ({ cv }) => (
     </Typography>
     <Grid container direction="row" justify="center" alignItems="center">
       {cv.map(({ node }) => (
-        <Grid key={node.id} item md={2} sm={4} xs={6}>
+        <Grid key={node.id} item md={2} sm={6}>
           <div style={{ marginTop: `10px`, marginBottom: `10px` }}>
             <img
               src={node.placeLogo.file.url}

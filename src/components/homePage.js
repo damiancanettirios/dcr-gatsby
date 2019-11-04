@@ -35,19 +35,17 @@ const Hero = () => {
   const classes = useStyles()
   return (
     <div className={classes.hero}>
-      <div>
-        <Typography
-          variant="h3"
-          color="inherit"
-          align="center"
-          className={classes.typography}
-        >
-          Damian Canetti-Rios is a strategist and currently the co-Managing
-          Director of
-          <span style={{ color: `#20BF55` }}>{' Hunter Applied Research'}</span>
-          , a boutique research management and government grants consultancy
-        </Typography>
-      </div>
+      <Typography
+        variant="h3"
+        color="inherit"
+        align="center"
+        className={classes.typography}
+      >
+        Damian Canetti-Rios is a strategist and currently the co-Managing
+        Director of
+        <span style={{ color: `#20BF55` }}>{' Hunter Applied Research'}</span>,
+        a boutique research management and government grants consultancy
+      </Typography>
     </div>
   )
 }
