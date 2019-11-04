@@ -27,7 +27,6 @@ module.exports = {
   },
   pathPrefix: '/',
   plugins: [
-    'gatsby-plugin-top-layout',
     {
       resolve: 'gatsby-plugin-material-ui',
       options: {
