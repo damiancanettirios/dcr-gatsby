@@ -24,6 +24,7 @@ module.exports = {
   siteMetadata: {
     title: 'Damian Canetti-Rios',
     description: 'The most humble person you will ever meet',
+    siteUrl: `https://www.damiancanettirios.com`,
   },
   pathPrefix: '/',
   plugins: [
@@ -35,6 +36,7 @@ module.exports = {
         // },
       },
     },
+    'gatsby-plugin-sitemap',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-plugin-manifest',
