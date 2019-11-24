@@ -1,27 +1,21 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles'
-import Typography from '@material-ui/core/Typography'
+import React from "react"
+import { graphql } from "gatsby"
+import Grid from "@material-ui/core/Grid"
+import { makeStyles } from "@material-ui/core/styles"
+import Typography from "@material-ui/core/Typography"
 
-import Layout from '../components/layout'
-import Hero from '../components/hero'
-import EachExperimentCol from '../components/each-experiment-col'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import TextHero from "../components/text-hero"
+import EachExperiment from "../components/each-experiment"
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   experimentList: {
-    width: `80%`,
+    width: `85%`,
     color: `#C6C7C4`,
     margin: `0 auto`,
   },
-  [theme.breakpoints.down('sm')]: {
-    experimentList: {
-      width: `90%`,
-      color: `#C6C7C4`,
-      margin: `0 auto`,
-    },
-  },
-}))
+})
 
 const ExperimentPage = ({ data }) => {
   const experiments = data.experiments.edges
@@ -29,8 +23,9 @@ const ExperimentPage = ({ data }) => {
   const classes = useStyles()
 
   return (
-    <Layout pageTitle="Experiments">
-      <Hero pageContent={pageContent} />
+    <Layout>
+      <SEO title="Experiments" />
+      <TextHero pageContent={pageContent} />
       <div className={classes.experimentList}>
         <Typography
           variant="h3"
@@ -42,7 +37,7 @@ const ExperimentPage = ({ data }) => {
         <hr style={{ color: `#C6C7C4` }} />
         <Grid container direction="column">
           {experiments.map(({ node }) => (
-            <EachExperimentCol key={node.id} node={node} />
+            <EachExperiment key={node.id} node={node} />
           ))}
         </Grid>
       </div>

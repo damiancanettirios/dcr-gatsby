@@ -22,66 +22,45 @@ if (!spaceId || !accessToken) {
 
 module.exports = {
   siteMetadata: {
-    title: 'Damian Canetti-Rios',
-    description: 'The most humble person you will ever meet',
+    title: `Damian Canetti-Rios`,
+    description: `The most humble person you will ever meet`,
     siteUrl: `https://www.damiancanettirios.com`,
+    author: `@dcrrrrrrrrr`,
   },
-  pathPrefix: '/',
   plugins: [
-    {
-      resolve: 'gatsby-plugin-material-ui',
-      options: {
-        // stylesProvider: {
-        //   injectFirst: true,
-        // },
-      },
-    },
-    'gatsby-plugin-sitemap',
-    'gatsby-transformer-sharp',
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: `Damian Canetti-Rios`,
-        short_name: `Damian Canetti-Rios Personal Site`,
-        start_url: `/`,
-        background_color: `#1D1E2C`,
-        theme_color: `#20BF55`,
-        display: `standalone`,
-        icon: `src/images/DamianFace.svg`,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-google-analytics`,
-      options: {
-        trackingId: 'UA-139385994-1',
-        // Puts tracking script in the head instead of the body
-        head: false,
-        // Setting this parameter is optional
-        anonymize: true,
-        // Setting this parameter is also optional
-        respectDNT: true,
-      },
-    },
-    `gatsby-plugin-offline`,
+    `gatsby-theme-material-ui`,
+    `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `src`,
-        path: `${__dirname}/src/`,
+        name: `images`,
+        path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-plugin-react-helmet',
-    'gatsby-plugin-sharp',
+    `gatsby-transformer-sharp`,
+    `gatsby-plugin-sharp`,
     {
-      resolve: 'gatsby-source-contentful',
+      resolve: `gatsby-source-contentful`,
       options: contentfulConfig,
     },
     {
-      resolve: 'gatsby-plugin-mdx',
+      resolve: `gatsby-plugin-mdx`,
       options: {
         defaultLayouts: {
           default: require.resolve('./src/components/layout.js'),
         },
+      },
+    },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Damian Canetti-Rios`,
+        short_name: `DCR`,
+        start_url: `/`,
+        background_color: `#1D1E2C`,
+        theme_color: `#20BF55`,
+        display: `minimal-ui`,
+        icon: `src/images/DamianFace.svg`,
       },
     },
   ],

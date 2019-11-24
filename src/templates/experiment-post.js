@@ -1,20 +1,20 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import React from "react"
+import { graphql } from "gatsby"
+import Img from "gatsby-image"
 
-import Typography from '@material-ui/core/Typography'
+import Typography from "@material-ui/core/Typography"
 
-import Layout from '../components/layout'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
 
-const ExperimentPost = ({ data }) => {
-  const post = data.experiment
-
+const ExperimentPost = ({ data: { experiment } }) => {
   return (
-    <Layout pageTitle={`${post.title}`}>
+    <Layout>
+      <SEO title={experiment.title} />
       <div>
         <Img
-          alt={post.title}
-          fluid={post.heroImage.fluid}
+          alt={experiment.title}
+          fluid={experiment.heroImage.fluid}
           style={{
             width: `80%`,
             margin: `0 auto`,
@@ -30,15 +30,15 @@ const ExperimentPost = ({ data }) => {
           paddingTop: 50,
         }}
       >
-        <Typography variant="h3" color="inherit">
-          {post.title}
+        <Typography variant="h3" color="primary">
+          {experiment.title}
         </Typography>
         <Typography
           variant="h6"
-          color="inherit"
+          color="primary"
           style={{ fontWeight: `normal`, marginTop: 20 }}
         >
-          {post.shortDescription}
+          {experiment.shortDescription}
         </Typography>
       </div>
     </Layout>

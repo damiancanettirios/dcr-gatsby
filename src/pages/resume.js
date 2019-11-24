@@ -1,21 +1,25 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
+import React from "react"
+import { graphql } from "gatsby"
+import Typography from "@material-ui/core/Typography"
+import Grid from "@material-ui/core/Grid"
 
-import Layout from '../components/layout'
-import FullCV from '../components/full-cv'
-import Hero from '../components/hero'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import ResumeEntry from "../components/resume-entry"
+import TextHero from "../components/text-hero"
 
-const CVPage = ({ data }) => {
-  const cv = data.allContentfulCv.edges
+import useResume from "../hooks/use-resume"
+
+const Resume = ({ data }) => {
+  const resume = useResume()
   const pageContent = data.pageContent
 
   return (
-    <Layout pageTitle="Resume">
-      <Hero pageContent={pageContent} />
-      <div style={{ marginBottom: 30, color: `#C6C7C4` }}>
-        <Typography variant="h3" color="inherit" align="center">
+    <Layout>
+      <SEO title="Resume" />
+      <TextHero pageContent={pageContent} />
+      <div style={{ marginBottom: 30 }}>
+        <Typography variant="h3" color="primary" align="center">
           {pageContent.secondTitle}
         </Typography>
       </div>
@@ -27,8 +31,12 @@ const CVPage = ({ data }) => {
           alignItems="center"
           style={{ margin: `0 auto` }}
         >
-          {cv.map(({ node }) => (
-            <FullCV key={node.id} cv={node} image={node.placeLogo.file.url} />
+          {resume.map(node => (
+            <ResumeEntry
+              key={node.id}
+              cv={node}
+              image={node.placeLogo.file.url}
+            />
           ))}
         </Grid>
       </div>
@@ -36,29 +44,10 @@ const CVPage = ({ data }) => {
   )
 }
 
-export default CVPage
+export default Resume
 
 export const pageQuery = graphql`
   query CVQuery {
-    allContentfulCv(sort: { fields: sequence, order: ASC }) {
-      edges {
-        node {
-          id
-          name
-          myTitle
-          startDate(formatString: "MMMM YYYY")
-          endDate(formatString: "MMMM YYYY")
-          placeLogo {
-            file {
-              url
-            }
-          }
-          duties {
-            duties
-          }
-        }
-      }
-    }
     pageContent: contentfulPageContent(page: { eq: "Resume" }) {
       title
       description {

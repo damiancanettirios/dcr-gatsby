@@ -1,1 +1,1 @@
-Damian Canetti-Rios personal site using Gatsby and Contentful
+Damian Canetti-Rios personal site damiancanettirios.com

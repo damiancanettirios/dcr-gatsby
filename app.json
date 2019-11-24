@@ -1,7 +1,0 @@
-{
-  "name": "Damian Canetti-Rios personal site",
-  "description": "Personal site about me and my work",
-  "keywords": ["contentful", "gatsby", "static", "ssg"],
-  "repository": "https://github.com/damiancanettirios/dcr-gatsby",
-  "success_url": "/"
-}

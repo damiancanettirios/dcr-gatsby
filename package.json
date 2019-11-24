@@ -1,72 +1,54 @@
 {
-  "name": "damian-canetti-rios",
-  "description": "Personal site of Damian Canetti-Rios",
-  "version": "1.0.1",
+  "name": "damiancanettirios-gatsby",
+  "private": true,
+  "description": "Simple personal website with Gatsby",
+  "version": "0.1.0",
   "author": "Damian Canetti-Rios <damian.canetti.rios@gmail.com>",
-  "bugs": {},
   "dependencies": {
-    "@material-ui/core": "^4.5.2",
-    "@material-ui/styles": "^4.5.2",
-    "@mdx-js/mdx": "^1.5.1",
-    "@mdx-js/react": "^1.5.1",
-    "core-js": "^3.3.6",
-    "gatsby-image": "^2.0.13",
-    "gatsby-mdx": "^1.0.0",
-    "gatsby-plugin-google-analytics": "^2.0.19",
-    "gatsby-plugin-manifest": "^2.0.29",
-    "gatsby-plugin-material-ui": "^1.2.4",
-    "gatsby-plugin-mdx": "^1.0.53",
-    "gatsby-plugin-offline": "^2.0.25",
-    "gatsby-plugin-react-helmet": "^3.0.0",
-    "gatsby-plugin-sharp": "^2.0.6",
-    "gatsby-plugin-sitemap": "^2.2.21",
-    "gatsby-source-contentful": "^2.0.2",
-    "gatsby-source-filesystem": "^2.0.33",
-    "gatsby-transformer-sharp": "^2.0.6",
-    "prop-types": "^15.7.2",
-    "react": "^16.11.0",
-    "react-dom": "^16.11.0",
-    "react-helmet": "^5.2.0",
-    "react-icons": "^3.6.1",
-    "react-youtube": "^7.9.0",
-    "sharp": "^0.21.0"
+    "@material-ui/core": "latest",
+    "@mdx-js/mdx": "latest",
+    "@mdx-js/react": "latest",
+    "gatsby": "latest",
+    "gatsby-image": "latest",
+    "gatsby-plugin-manifest": "latest",
+    "gatsby-plugin-mdx": "latest",
+    "gatsby-plugin-offline": "latest",
+    "gatsby-plugin-react-helmet": "latest",
+    "gatsby-plugin-sharp": "latest",
+    "gatsby-plugin-sitemap": "latest",
+    "gatsby-source-contentful": "latest",
+    "gatsby-source-filesystem": "latest",
+    "gatsby-theme-material-ui": "latest",
+    "gatsby-transformer-sharp": "latest",
+    "prop-types": "latest",
+    "react": "latest",
+    "react-dom": "latest",
+    "react-helmet": "latest",
+    "react-icons": "latest",
+    "react-youtube": "latest",
+    "typescript": "latest"
   },
   "devDependencies": {
-    "babel-eslint": "^10.0.1",
-    "chalk": "^2.4.1",
-    "contentful-import": "^7.4.0",
-    "eslint": "^5.6.1",
-    "eslint-plugin-react": "^7.11.1",
-    "gatsby": "^2.13.50",
-    "gh-pages": "^2.0.1",
-    "inquirer": "^6.2.0",
-    "prettier": "^1.14.3",
-    "rimraf": "^2.6.2",
-    "yargs-parser": "^11.0.0"
+    "prettier": "latest"
   },
-  "homepage": "https://github.com/damiancanettirios/dcr-gatsby#readme",
   "keywords": [
-    "gatsby",
-    "contentful"
+    "gatsby"
   ],
   "license": "MIT",
-  "main": "n/a",
+  "scripts": {
+    "build": "gatsby build",
+    "develop": "gatsby develop",
+    "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "start": "npm run develop",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean",
+    "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/damiancanettirios/dcr-gatsby.git"
+    "url": "https://github.com/damiancanettirios/dcr-gatsby"
   },
-  "scripts": {
-    "dev": "gatsby develop",
-    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --trailing-comma es5 --no-semi --single-quote --write 'src/**/*.js' 'src/**/*.md' 'bin/*.js'",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
-    "fix-semi": "eslint --quiet --ignore-pattern node_modules --ignore-pattern public --parser babel-eslint --no-eslintrc --rule '{\"semi\": [2, \"never\"], \"no-extra-semi\": [2]}' --fix *.js bin/*.js",
-    "postinstall": "node ./bin/hello.js",
-    "setup": "node ./bin/setup.js",
-    "heroku-postbuild": "gatsby build",
-    "cleanup-repository": "rimraf bin contentful && yarn remove contentful-import chalk inquirer rimraf "
+  "bugs": {
+    "url": "https://github.com/damiancanettirios/dcr-gatsby/issues"
   }
 }

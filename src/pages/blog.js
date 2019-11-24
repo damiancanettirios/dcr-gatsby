@@ -1,15 +1,18 @@
-import React from 'react'
-import { graphql } from 'gatsby'
+import React from "react"
+import { graphql } from "gatsby"
 
-import usePosts from '../hooks/use-posts'
-import Layout from '../components/layout'
-import BlogList from '../components/blog-list'
+import Layout from "../components/layout"
+import SEO from "../components/seo"
+import TextHero from "../components/text-hero"
+import AllBlogPosts from "../components/all-blog-posts"
 
-const Blog = ({ data: { blog } }) => {
-  const posts = usePosts()
+const Blog = ({ data }) => {
+  const pageContent = data.pageContent
   return (
-    <Layout pageTitle="Blog">
-      <BlogList content={blog} posts={posts} />
+    <Layout>
+      <SEO title="Blog" />
+      <TextHero pageContent={pageContent} />
+      <AllBlogPosts />
     </Layout>
   )
 }
@@ -18,7 +21,7 @@ export default Blog
 
 export const pageQuery = graphql`
   query BlogQuery {
-    blog: contentfulPageContent(page: { eq: "Blog" }) {
+    pageContent: contentfulPageContent(page: { eq: "Blog" }) {
       page
       title
       description {

@@ -1,7 +1,8 @@
-import React from 'react'
-import { MDXProvider } from '@mdx-js/react'
+import React from "react"
+import { MDXProvider } from "@mdx-js/react"
 
-import Typography from '@material-ui/core/Typography'
+import Typography from "@material-ui/core/Typography"
+import Container from "@material-ui/core/Container"
 
 const components = {
   blockquote: props => (
@@ -34,7 +35,11 @@ const components = {
 }
 
 const BlogLayout = ({ children }) => {
-  return <MDXProvider components={components}>{children}</MDXProvider>
+  return (
+    <Container>
+      <MDXProvider components={components}>{children}</MDXProvider>
+    </Container>
+  )
 }
 
 export default BlogLayout
