@@ -1,13 +1,13 @@
-import React from "react"
-import { graphql } from "gatsby"
-import Grid from "@material-ui/core/Grid"
-import { makeStyles } from "@material-ui/core/styles"
-import Typography from "@material-ui/core/Typography"
+import React from 'react'
+import { graphql } from 'gatsby'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
+import Typography from '@material-ui/core/Typography'
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
-import TextHero from "../components/text-hero"
-import EachExperiment from "../components/each-experiment"
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import TextHero from '../components/text-hero'
+import EachExperiment from '../components/each-experiment'
 
 const useStyles = makeStyles({
   experimentList: {
@@ -32,12 +32,14 @@ const ExperimentPage = ({ data }) => {
           color="inherit"
           style={{ marginTop: 30, marginBottom: 10 }}
         >
-          {pageContent.secondTitle}
+          Websites
         </Typography>
         <hr style={{ color: `#C6C7C4` }} />
-        <Grid container direction="column">
+        <Grid container direction="row">
           {experiments.map(({ node }) => (
-            <EachExperiment key={node.id} node={node} />
+            <Grid item key={node.id} md={4} sm={12} style={{ marginTop: 10 }}>
+              <EachExperiment node={node} />
+            </Grid>
           ))}
         </Grid>
       </div>
